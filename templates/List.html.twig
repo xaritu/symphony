@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        {% if app.user %}
+
+            <h2>Article List</h2>
+
+            <table class = "table">
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th></th>
+                </tr>
+                {% for x in list %}
+                    <tr>
+                        <td>{{ x.Id }}</td>
+                        <td><a href="/article/{{ x.Id }}"> {{ x.Title }}</a></td>
+                        <td>{{ x.Content }}</td>
+                        <td><a href="/article/edit/{{ x.Id }}">Edit</a> </td>
+                        <td></td>
+                        <td><a href="/article/delete/{{ x.Id }}">Delete</a></td>
+                    </tr>
+
+                {% endfor %}
+             </table>
+
+            <p><a href="/article/new">Create New</a></p>
+            <p><a href="/logout">Logout</a></p>
+
+         {% else %}
+             <h3> Please login or Register First </h3>
+             <h2> <a href="/login">Login</a>  <a href="/register">Register</a>   </h2>
+        {% endif %}
+
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
