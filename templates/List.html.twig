@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
     </head>
     <body>
         {% block body %}
@@ -31,9 +33,9 @@
                 {% endfor %}
              </table>
 
-            <p><a href="/article/new">Create New</a></p>
-            <p><a href="/logout">Logout</a></p>
-
+            <p><button class="btn btn-outline-primary"><a href="/article/new">Create New</a></button>
+            <button class="btn btn-outline-primary"><a href="/logout">Logout</a></button>
+            </p>
          {% else %}
              <h3> Please login or Register First </h3>
              <h2> <a href="/login">Login</a>  <a href="/register">Register</a>   </h2>
