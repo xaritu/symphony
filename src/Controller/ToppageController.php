@@ -24,6 +24,7 @@ class ToppageController extends AbstractController
      */
     public function toppage(){
 
-        return $this->render("topheader.html.twig");
+        //return $this->render("topheader.html.twig");
+        return $this->render("top.html.twig");
     }
 }

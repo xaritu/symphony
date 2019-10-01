@@ -54,6 +54,7 @@ class ArticleController extends AbstractController
 
        return $this->render("list.html.twig",array('list' => $article));
 
+
    }
 
     /**

@@ -8,14 +8,14 @@
 
 namespace App\Tests\Util;
 
-use App\Util\Calculator;
+use App\Util\Calculator1;
 use PHPUnit\Framework\TestCase;
 
 class CalculatorTest extends TestCase
 {
     public function testAdd()
     {
-        $calculator = new Calculator();
+        $calculator = new Calculator1();
         $result = $calculator->add(30, 12);
 
         // assert that your calculator added the numbers correctly!

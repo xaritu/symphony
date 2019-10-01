@@ -1,11 +1,17 @@
 // assets/css/global.scss
-
+@import "../../node_modules/bootstrap/scss/bootstrap";
 // customize some Bootstrap variables
 $primary: darken(#428bca, 20%);
 
 // the ~ allows you to reference things in node_modules
 
-  .main-Header {
-    width: 1200px;
-    margin: 0 auto;
+.global {
+
+  margin-top: 30px;
+  text-align: center;
+  a{
+    color: #1C440C;
+    background-color: red;
   }
+}
+
