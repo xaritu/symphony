@@ -7,19 +7,20 @@ use FOS\UserBundle\Doctrine\UserManager;
 //use Liip\TestFixturesBundle\Test\FixturesTrait;
 
 class ArticleControllerTest extends WebTestCase{
+
     public function testsuccess(){
         $client = static::createClient();
         //$client->followRedirects(true);
 
         $crawler = $client->request('GET', '/login');
-        $crawler->attr('class');
+ //       $crawler->attr('class');
        $buttonCrawlerNode = $crawler->selectButton('Log in');
-//        $form = $buttonCrawlerNode->form();
+        $form = $buttonCrawlerNode->form();
 
-        $form = $buttonCrawlerNode->form([
-            '_username'    => 'pari',
-            '_password' => '1421',
-        ]);
+//        $form = $buttonCrawlerNode->form([
+//            '_username'    => 'pari',
+//            '_password' => '1421',
+//        ]);
         $client->submit($form);
 
       //  $this->assertEquals(302, $client->getResponse()->getStatusCode());
@@ -37,8 +38,7 @@ class ArticleControllerTest extends WebTestCase{
     public function testPageIsSuccessful($url)
     {
         $client = self::createClient();
-        $client->request(
-           'GET', $url );
+        $client->request('GET', $url );
 
         $this->assertTrue($client->getResponse()->isRedirect());
     }
@@ -47,8 +47,44 @@ class ArticleControllerTest extends WebTestCase{
     {
         return [
 
-            ['/article/list']
+            ['/article'],
+            ['/register']
 
         ];
     }
+
+
+
+    /**
+     * @dataProvider provideUrls
+     */
+    public function testPageIsList()
+    {
+        $client = static::createClient();
+        $client->followRedirects(true);
+
+        $crawler = $client->request('GET', 'article/list');
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+
+
+
+
+    public function testArticle()
+    {
+        $client = static::createClient();
+        $client->followRedirects(true);
+        $crawler = $client->request('GET', '/article/new', ['name' => 'article']);
+//        echo $client->getResponse()->getContent();
+        $data = [
+            'article[Title]' => 'test title',
+            'article[Content]' => 'test content',
+        ];
+        $crawler = $client->submitForm('Save',  $data);
+
+        //$this->$client->submit($data);
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
 }
+
+
