@@ -9,7 +9,7 @@
 namespace App\Util;
 
 
-class Calculator
+class Calculator1
 {
     public function add($a, $b)
     {

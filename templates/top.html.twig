@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Top Page{% endblock %}</title>
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+        <link href="topheader.html.twig">
+    </head>
+
+    <body>
+        {% block body %}
+            <div class="top-Banner">
+                <img src="http://www.inanisg.com.tr/uploads/slider/docs_940x470.jpg" class="img-fluid" alt="Responsive image">
+            </div>
+            <h2>Title</h2>
+            <h2>Test</h2>
+            <h2>Title</h2>
+            <h2>Test</h2>
+            <h2>Title</h2>
+            <h2>Test</h2>
+            <h2>Title</h2>
+            <h2>Test</h2>
+
+
+        {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+    </body>
+</html>
